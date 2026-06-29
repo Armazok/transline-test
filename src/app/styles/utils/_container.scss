@@ -1,0 +1,25 @@
+@use 'sass:math';
+@use 'common';
+@use 'function';
+
+[class*='container'] {
+	@if (common.$maxWidthContainer > 0) {
+		max-width: function.rem(common.$maxWidthContainer);
+		box-sizing: border-box;
+
+		margin: 0 auto;
+	}
+	@if (common.$containerPadding > 0) {
+		padding: 0 function.rem(math.div(common.$containerPadding, 2));
+	}
+}
+
+[class*='container__header'] {
+	@if (common.$maxWidthContainer > 0) {
+		max-width: function.rem(common.$maxWidthContainer);
+		box-sizing: border-box;
+	}
+	@if (common.$containerPadding > 0) {
+		padding: 0 function.rem(math.div(common.$containerPadding, 2));
+	}
+}

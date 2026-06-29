@@ -1,0 +1,140 @@
+.Sidebar {
+	display: flex;
+	flex-direction: column;
+
+	width: 240px;
+	min-height: 100vh;
+
+	padding: 0 0 24px;
+
+	background: var(--color-background-surface-1);
+	border-right: 1px solid var(--color-background-surface-2);
+
+	flex-shrink: 0;
+}
+
+.Sidebar__header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	padding: 20px 16px 16px;
+
+	border-bottom: 1px solid var(--color-background-surface-2);
+}
+
+.Sidebar__menuBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 36px;
+	height: 36px;
+
+	background: transparent;
+
+	color: var(--text-black);
+	border: none;
+	border-radius: 8px;
+
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.Sidebar__menuBtn:hover {
+	background: var(--color-background-surface-2);
+}
+
+.Sidebar__logo {
+	color: var(--text-black);
+
+	font-size: 16px;
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Sidebar__nav {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 4px;
+
+	padding: 16px 8px;
+}
+
+.Sidebar__group {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+
+	margin-bottom: 4px;
+
+	padding-bottom: 8px;
+
+	border-bottom: 1px solid var(--color-background-surface-2);
+}
+
+.Sidebar__group:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.Sidebar__groupTitle {
+	margin: 0 0 4px 8px;
+
+	color: var(--text-grey);
+
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.NavItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	padding: 9px 10px;
+
+	color: var(--text-black);
+
+	border-radius: 8px;
+
+	font-size: 14px;
+	font-weight: 500;
+
+	transition:
+		background 0.15s ease,
+		color 0.15s ease;
+
+	text-decoration: none;
+}
+
+.NavItem:hover {
+	background: var(--color-background-surface-2);
+}
+
+.NavItem_active {
+	background: var(--main-blue);
+	color: #fff;
+}
+
+.NavItem_active:hover {
+	background: var(--main-blue);
+}
+
+.NavItem__icon {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.NavItem__label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

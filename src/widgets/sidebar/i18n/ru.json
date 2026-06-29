@@ -1,0 +1,24 @@
+{
+	"brand": "LogiTrack",
+	"nav": {
+		"orders": {
+			"title": "Заявки",
+			"active": "Активные заявки",
+			"archived": "Архив заявок"
+		},
+		"contractors": {
+			"title": "Контрагенты",
+			"customers": "Заказчики",
+			"carriers": "Перевозчики"
+		},
+		"fleet": {
+			"title": "Автопарк",
+			"transport": "Транспорт"
+		},
+		"management": {
+			"title": "Управление",
+			"references": "Справочники",
+			"managers": "Менеджеры"
+		}
+	}
+}

@@ -1,0 +1,30 @@
+.RegisterProfileForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 440px;
+
+	@media (max-width: 768px) {
+		justify-content: flex-start;
+	}
+
+	&__header {
+		margin-bottom: 32px;
+	}
+
+	&__title {
+		margin-bottom: 12px;
+
+		color: var(--text-black);
+	}
+
+	&__fields {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		margin-bottom: 32px;
+	}
+}

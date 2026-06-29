@@ -1,0 +1,58 @@
+.VerifyOtpForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 440px;
+
+	@media (max-width: 768px) {
+		justify-content: flex-start;
+	}
+
+	&__header {
+		margin-bottom: 40px;
+	}
+
+	&__title {
+		margin-bottom: 12px;
+
+		color: var(--text-black);
+	}
+
+	&__otp {
+		margin-bottom: 12px;
+	}
+
+	&__error {
+		margin-bottom: 8px;
+
+		color: #ef4444;
+
+		font-size: 13px;
+	}
+
+	&__resend {
+		margin-bottom: 40px;
+	}
+
+	&__resendBtn {
+		color: var(--main-blue);
+
+		font-size: 14px;
+		font-weight: 500;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		cursor: pointer;
+
+		transition: opacity 0.15s ease;
+	}
+
+	&__resendBtn:hover {
+		opacity: 0.75;
+	}
+
+	&__timer {
+		color: var(--text-grey);
+	}
+}

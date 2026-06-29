@@ -1,0 +1,24 @@
+{
+	"brand": "LogiTrack",
+	"nav": {
+		"orders": {
+			"title": "Orders",
+			"active": "Active orders",
+			"archived": "Archived orders"
+		},
+		"contractors": {
+			"title": "Contractors",
+			"customers": "Customers",
+			"carriers": "Carriers"
+		},
+		"fleet": {
+			"title": "Fleet",
+			"transport": "Transport"
+		},
+		"management": {
+			"title": "Management",
+			"references": "References",
+			"managers": "Managers"
+		}
+	}
+}

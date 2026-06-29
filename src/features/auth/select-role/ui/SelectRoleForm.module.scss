@@ -1,0 +1,101 @@
+.SelectRoleForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 440px;
+
+	@media (max-width: 834px) {
+		justify-content: flex-start;
+	}
+
+	&__header {
+		margin-bottom: 32px;
+	}
+
+	&__title {
+		margin-bottom: 12px;
+
+		color: var(--text-black);
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		margin-bottom: 32px;
+	}
+
+	&__submit {
+		text-transform: none;
+	}
+}
+
+.RoleCard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 20px;
+
+	background: var(--bg-white);
+	border: 1.5px solid var(--stroke-grey);
+	border-radius: 12px;
+	cursor: pointer;
+
+	text-align: left;
+
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+
+	&_selected {
+		border-color: var(--main-blue);
+
+		box-shadow: 0 0 0 1px var(--main-blue);
+	}
+
+	&__content {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	&__icon {
+		width: 36px;
+		height: 36px;
+
+		margin-bottom: 10px;
+		flex-shrink: 0;
+	}
+
+	&__title {
+		margin-bottom: 6px;
+
+		color: var(--text-black);
+
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	&__description {
+		color: var(--text-grey);
+
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	&__illustration {
+		display: flex;
+		flex-shrink: 0;
+
+		align-items: center;
+		justify-content: center;
+
+		margin-left: 12px;
+	}
+}

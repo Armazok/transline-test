@@ -1,0 +1,14 @@
+.RegisterPanelWidget {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+
+	@include adaptiveValue(padding-left, 64, 24);
+	@include adaptiveValue(padding-right, 64, 24);
+
+	@media (max-width: 834px) {
+		@include adaptiveValue(padding-top, 96, 32);
+		@include adaptiveValue(padding-bottom, 120, 22);
+	}
+}

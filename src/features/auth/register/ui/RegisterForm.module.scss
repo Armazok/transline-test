@@ -1,0 +1,48 @@
+.RegisterForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 440px;
+
+	@media (max-width: 834px) {
+		justify-content: flex-start;
+	}
+
+	&__header {
+		margin-bottom: 32px;
+	}
+
+	&__title {
+		margin-bottom: 12px;
+
+		color: var(--text-black);
+	}
+
+	&__phoneRow {
+		margin-bottom: 24px;
+	}
+
+	&__agreement {
+		margin-bottom: 32px;
+	}
+
+	&__agreementLink {
+		color: var(--text-black);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	&__agreementLink:link {
+		color: var(--text-black);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	&__agreementLink:visited {
+		color: var(--text-black);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+}
