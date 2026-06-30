@@ -1,1 +1,2 @@
-export { COUNTRIES, detectCountryByLocale } from './model/countries';
+export { COUNTRIES } from './model/config/countries';
+export { detectCountryByLocale } from './model/lib/detectCountry';

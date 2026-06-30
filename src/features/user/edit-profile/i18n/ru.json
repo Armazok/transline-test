@@ -1,0 +1,31 @@
+{
+	"ProfilePage": {
+		"saveBtn": "Сохранить",
+		"closeBtn": "Закрыть",
+		"clearField": "Очистить",
+		"fields": {
+			"lastName": "Фамилия",
+			"firstName": "Имя",
+			"middleName": "Отчество",
+			"phone": "Номер телефона",
+			"email": "Email",
+			"role": "Роль",
+			"taxId": "ИИН / БИН",
+			"iin": "ИИН",
+			"bin": "БИН"
+		},
+		"roles": {
+			"customer": "Заказчик",
+			"carrier": "Перевозчик"
+		},
+		"toast": {
+			"saved": "Изменения сохранены",
+			"error": "Не удалось сохранить изменения"
+		},
+		"errors": {
+			"required": "Поле не может быть пустым",
+			"lettersOnly": "Допускаются только буквы",
+			"email": "Введите корректный email"
+		}
+	}
+}

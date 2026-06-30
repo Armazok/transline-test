@@ -1,0 +1,20 @@
+{
+	"Error404": {
+		"code": "404",
+		"title": "Page not found",
+		"desc": "The page you're looking for doesn't exist or has been moved.",
+		"backBtn": "Back to dashboard"
+	},
+	"Error403": {
+		"code": "403",
+		"title": "Access denied",
+		"desc": "You don't have permission to view this page.",
+		"backBtn": "Back to dashboard"
+	},
+	"Error500": {
+		"code": "500",
+		"title": "Server error",
+		"desc": "Something went wrong on our end. Please try again later.",
+		"backBtn": "Back to dashboard"
+	}
+}

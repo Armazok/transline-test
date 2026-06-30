@@ -1,0 +1,35 @@
+.OtpInput {
+	display: flex;
+	gap: 10px;
+
+	&__cell {
+		width: 46px;
+		height: 56px;
+
+		color: var(--text-black);
+
+		border: 1.5px solid var(--stroke-grey);
+		border-radius: 8px;
+
+		font-size: 22px;
+		font-weight: 600;
+		text-align: center;
+
+		transition: border-color 0.15s ease;
+
+		caret-color: var(--main-blue);
+	}
+
+	&__cell:focus {
+		border-color: var(--main-blue);
+		outline: none;
+	}
+
+	&__cell_filled {
+		border-color: var(--main-blue);
+	}
+
+	&__cell_error {
+		border-color: var(--color-error);
+	}
+}

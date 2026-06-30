@@ -1,0 +1,73 @@
+{
+	"AuthLayout": {
+		"welcome": "Welcome to your business dashboard!"
+	},
+	"RegisterProfileForm": {
+		"title": "Profile",
+		"subtitle": "Fill in your details to complete registration",
+		"fields": {
+			"lastName": "Last name",
+			"firstName": "First name",
+			"middleName": "Middle name",
+			"email": "Email",
+			"password": "Password",
+			"confirmPassword": "Confirm password",
+			"iin": "IIN",
+			"bin": "BIN"
+		},
+		"submit": "SIGN UP",
+		"errors": {
+			"required": "Required field",
+			"email": "Enter a valid email",
+			"passwordMin": "Minimum 8 characters",
+			"passwordStrength": "Password must contain letters and digits",
+			"confirmPassword": "Passwords do not match",
+			"taxIdLength": "IIN/BIN must be exactly 12 digits"
+		},
+		"toast": {
+			"success": "Registration complete",
+			"error": "Failed to save data. Please try again"
+		}
+	},
+	"VerifyOtpForm": {
+		"title": "Enter the code",
+		"subtitle": "A verification code was sent to {{phone}}",
+		"resend": "Resend code",
+		"timer": "Resend in {{seconds}} sec",
+		"submit": "continue",
+		"error": {
+			"invalid": "Invalid verification code"
+		},
+		"toast": {
+			"resent": "Code resent successfully"
+		}
+	},
+	"SelectRoleForm": {
+		"title": "Registration",
+		"subtitle": "Choose how you want to use the app",
+		"customer": {
+			"title": "as a customer",
+			"description": "Monitor the execution of orders in real time"
+		},
+		"carrier": {
+			"title": "as a carrier",
+			"description": "Get up-to-date information about your shipments"
+		},
+		"submit": "continue"
+	},
+	"RegisterForm": {
+		"title": "Registration",
+		"subtitle": "To log in to your personal account, enter your phone number. An SMS with a verification code will be sent to it",
+		"phonePlaceholder": "(000) 000-00-00",
+		"agreement": "I agree with",
+		"agreementLink": "privacy policy",
+		"submit": "SIGN IN",
+		"errors": {
+			"phone": "Enter a valid phone number"
+		},
+		"toast": {
+			"success": "SMS sent. Test code: 123456",
+			"error": "Failed to send SMS. Please try again"
+		}
+	}
+}

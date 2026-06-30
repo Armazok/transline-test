@@ -1,0 +1,160 @@
+.AuthLayout {
+	height: 100%;
+
+	&__content {
+		position: relative;
+
+		display: flex;
+
+		height: 100%;
+
+		@media (max-width: 834px) {
+			flex-direction: column;
+
+			height: auto;
+			min-height: 100%;
+		}
+	}
+
+	&__welcomeWrapper {
+		flex: 1;
+
+		background: var(--main-blue);
+
+		@media (max-width: 834px) {
+			flex: none;
+		}
+	}
+
+	&__welcomeInner {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+
+		height: 90%;
+
+		@include adaptiveValue(padding-left, 64, 24);
+		@include adaptiveValue(padding-right, 64, 24);
+
+		@media (max-width: 834px) {
+			@include adaptiveValue(padding-top, 96, 16);
+			@include adaptiveValue(padding-bottom, 96, 16);
+		}
+	}
+
+	&__logo {
+		flex-shrink: 0;
+
+		width: 57px;
+		height: 44px;
+
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		color: var(--text-white);
+	}
+
+	&__formWrapper {
+		position: relative;
+
+		display: flex;
+
+		flex: 1;
+
+		overflow-y: auto;
+
+		background: var(--bg-white);
+
+		@media (max-width: 834px) {
+			flex: none;
+			overflow-y: visible;
+		}
+	}
+
+	&__controls {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		z-index: 10;
+
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	&__footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		width: 100%;
+
+		pointer-events: none;
+
+		@include adaptiveValue(margin-bottom, 62, 54);
+
+		@media (max-width: 834px) {
+			position: static;
+
+			margin-top: auto;
+			margin-bottom: 30px;
+		}
+	}
+
+	&__footer__src {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__footer__src_car {
+		flex-shrink: 0;
+
+		width: 96px;
+		height: 96px;
+
+		color: var(--text-white);
+
+		@include adaptiveValue(margin-left, 64, 24);
+
+		@media (max-width: 834px) {
+			color: var(--main-blue);
+		}
+	}
+
+	&__footer__src_place {
+		flex-shrink: 0;
+
+		width: 72px;
+		height: 72px;
+
+		color: var(--main-blue);
+
+		@include adaptiveValue(margin-right, 64, 24);
+	}
+
+	&__footer__linear {
+		display: flex;
+
+		width: 100%;
+		height: 4px;
+	}
+
+	&__footer__linear_white {
+		flex: 1;
+
+		background: var(--bg-white);
+
+		@media (max-width: 834px) {
+			background: var(--main-blue);
+		}
+	}
+
+	&__footer__linear_blue {
+		flex: 1;
+
+		background: var(--main-blue);
+	}
+}

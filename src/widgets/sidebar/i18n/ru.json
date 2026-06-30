@@ -1,5 +1,10 @@
 {
-	"brand": "LogiTrack",
+	"brand": "TRANSLINE",
+	"header": {
+		"profile": "Мой профиль",
+		"editProfile": "Редактирование профиля",
+		"logout": "Выйти"
+	},
 	"nav": {
 		"orders": {
 			"title": "Заявки",
@@ -17,7 +22,12 @@
 		},
 		"management": {
 			"title": "Управление",
-			"references": "Справочники",
+			"references": {
+				"title": "Справочники",
+				"transportTypes": "Типы транспорта",
+				"cargoTypes": "Типы грузов",
+				"cities": "Города"
+			},
 			"managers": "Менеджеры"
 		}
 	}

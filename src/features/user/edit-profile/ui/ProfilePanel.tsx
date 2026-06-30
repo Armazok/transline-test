@@ -1,127 +1,95 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { useUser } from '@/entities/user';
+import ChevronDownIcon from '@/shared/assets/icons/ui/chevron-down.svg?react';
+import { Button, BUTTON_VARIANT, Input, INPUT_VARIANT } from '@/shared/ui';
 
-import { ROUTER_PATH } from '@/shared/config';
-import { removeAccessToken } from '@/shared/lib';
-import { Button, BUTTON_VARIANT, Input } from '@/shared/ui';
-
-import { useEditProfile } from '../model/useEditProfile';
+import { PROFILE_FIELDS } from '../model/config/profile-fields-config';
+import { type ProfileFormFields, useEditProfile } from '../model/hooks/useEditProfile';
 
 import cls from './ProfilePanel.module.scss';
 
 interface ProfilePanelProps {
-	className?: string;
+	onClose: () => void;
 }
 
-interface FieldRowProps {
-	label: string;
-	value: string;
-}
-
-const FieldRow = ({ label, value }: FieldRowProps) => (
-	<div className={cls.ProfilePanel__row}>
-		<span className={cls.ProfilePanel__label}>{label}</span>
-		<span className={cls.ProfilePanel__value}>{value}</span>
-	</div>
-);
-
-export const ProfilePanel = memo(({ className }: ProfilePanelProps) => {
+export const ProfilePanel = memo(({ onClose }: ProfilePanelProps) => {
 	const { t } = useTranslation('profile');
-	const navigate = useNavigate();
-	const { clearProfile } = useUser();
-	const { profile, isEditing, draft, startEdit, cancelEdit, handleDraftChange, saveEdit } =
-		useEditProfile();
-
-	const handleLogout = useCallback(() => {
-		clearProfile();
-		removeAccessToken();
-		navigate(ROUTER_PATH.auth.register, { replace: true });
-	}, [clearProfile, navigate]);
+	const { profile, fields, watch, clearField, getFieldError, isDirty, handleClose, onSubmit } = useEditProfile();
 
 	if (!profile) return null;
 
-	const roleLabel =
-		profile.role === 'carrier' ? t('ProfilePage.roles.carrier') : t('ProfilePage.roles.customer');
-
 	return (
-		<div className={classNames(cls.ProfilePanel, className)}>
-			<div className={cls.ProfilePanel__body}>
-				{isEditing ? (
-					<>
-						<div className={cls.ProfilePanel__editRow}>
-							<span className={cls.ProfilePanel__label}>{t('ProfilePage.fields.lastName')}</span>
-							<Input
-								name="lastName"
-								value={draft.lastName}
-								onChange={handleDraftChange}
-								wrapperClassName={cls.ProfilePanel__editInput}
-							/>
-						</div>
-						<div className={cls.ProfilePanel__editRow}>
-							<span className={cls.ProfilePanel__label}>{t('ProfilePage.fields.firstName')}</span>
-							<Input
-								name="firstName"
-								value={draft.firstName}
-								onChange={handleDraftChange}
-								wrapperClassName={cls.ProfilePanel__editInput}
-							/>
-						</div>
-						<div className={cls.ProfilePanel__editRow}>
-							<span className={cls.ProfilePanel__label}>{t('ProfilePage.fields.email')}</span>
-							<Input
-								name="email"
-								 
-								type="email"
-								value={draft.email}
-								onChange={handleDraftChange}
-								wrapperClassName={cls.ProfilePanel__editInput}
-							/>
-						</div>
-						<FieldRow label={t('ProfilePage.fields.phone')} value={profile.phone} />
-						<FieldRow label={t('ProfilePage.fields.role')} value={roleLabel} />
-						{profile.middleName && (
-							<FieldRow label={t('ProfilePage.fields.middleName')} value={profile.middleName} />
-						)}
-						<FieldRow label={t('ProfilePage.fields.taxId')} value={profile.taxId} />
-					</>
-				) : (
-					<>
-						<FieldRow label={t('ProfilePage.fields.lastName')} value={profile.lastName} />
-						<FieldRow label={t('ProfilePage.fields.firstName')} value={profile.firstName} />
-						{profile.middleName && (
-							<FieldRow label={t('ProfilePage.fields.middleName')} value={profile.middleName} />
-						)}
-						<FieldRow label={t('ProfilePage.fields.email')} value={profile.email} />
-						<FieldRow label={t('ProfilePage.fields.phone')} value={profile.phone} />
-						<FieldRow label={t('ProfilePage.fields.role')} value={roleLabel} />
-						<FieldRow label={t('ProfilePage.fields.taxId')} value={profile.taxId} />
-					</>
-				)}
+		<form className={cls.ProfilePanel} onSubmit={onSubmit} noValidate>
+			<div className={cls.ProfilePanel__header}>
+				<Button
+					variant={BUTTON_VARIANT.CLEAR}
+					type="submit"
+					className={cls.ProfilePanel__saveBtn}
+					disabled={!isDirty}
+					isDisabled={!isDirty}
+				>
+					{t('ProfilePage.saveBtn').toLowerCase()}
+				</Button>
+				<Button
+					variant={BUTTON_VARIANT.CLEAR}
+					type="button"
+					className={cls.ProfilePanel__closeBtn}
+					onClick={() => handleClose(onClose)}
+					aria-label={t('ProfilePage.closeBtn')}
+				>
+					<ChevronDownIcon className={cls.ProfilePanel__closeIcon} />
+				</Button>
 			</div>
 
-			<div className={cls.ProfilePanel__actions}>
-				{isEditing ? (
-					<>
-						<Button onClick={saveEdit}>{t('ProfilePage.saveBtn')}</Button>
-						<Button variant={BUTTON_VARIANT.CLEAR} onClick={cancelEdit}>
-							{t('ProfilePage.cancelBtn')}
-						</Button>
-					</>
-				) : (
-					<>
-						<Button onClick={startEdit}>{t('ProfilePage.editBtn')}</Button>
-						<Button variant={BUTTON_VARIANT.CLEAR} onClick={handleLogout}>
-							{t('ProfilePage.logoutBtn')}
-						</Button>
-					</>
-				)}
+			<div className={cls.ProfilePanel__body}>
+				{PROFILE_FIELDS.map(({ name, label, readonly }) => {
+					const rhfName = name as keyof ProfileFormFields;
+					const fieldLabel =
+						name === 'taxId'
+							? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+								t((`ProfilePage.fields.${profile.role === 'customer' ? 'bin' : 'iin'}`) as any)
+							: t(label);
+					return (
+						<div key={name} className={cls.ProfilePanel__row}>
+							<span className={cls.ProfilePanel__label}>{fieldLabel}</span>
+							<div className={cls.ProfilePanel__valueCell}>
+								{readonly ? (
+									<span className={cls.ProfilePanel__readonlyValue}>
+										{name === 'role'
+											? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+												t(`ProfilePage.roles.${profile.role}` as any)
+											: String(profile[name])}
+									</span>
+								) : (
+									<>
+										<Input
+											variant={INPUT_VARIANT.GHOST}
+											wrapperClassName={cls.ProfilePanel__inputWrapper}
+											className={cls.ProfilePanel__input}
+											{...fields[rhfName]}
+											error={getFieldError(rhfName)}
+										/>
+										{watch(rhfName) && (
+											<Button
+												variant={BUTTON_VARIANT.CLEAR}
+												type="button"
+												className={cls.ProfilePanel__clearBtn}
+												onClick={() => clearField(rhfName)}
+												aria-label={t('ProfilePage.clearField')}
+											>
+												×
+											</Button>
+										)}
+									</>
+								)}
+							</div>
+						</div>
+					);
+				})}
 			</div>
-		</div>
+		</form>
 	);
 });
 

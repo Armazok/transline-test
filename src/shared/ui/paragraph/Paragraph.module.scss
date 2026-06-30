@@ -1,0 +1,8 @@
+.paragraph {
+	color: var(--color-text-body);
+}
+
+.text_1 {
+	@extend %text_1_template;
+	color: var(--text-secondary);
+}

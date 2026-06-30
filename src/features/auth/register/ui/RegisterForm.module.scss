@@ -20,8 +20,22 @@
 		color: var(--text-black);
 	}
 
-	&__phoneRow {
+	&__phoneGroup {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+
 		margin-bottom: 24px;
+	}
+
+	&__phoneRow {
+		margin-bottom: 0;
+	}
+
+	&__phoneError {
+		color: var(--color-error);
+
+		font-size: 12px;
 	}
 
 	&__agreement {

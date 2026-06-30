@@ -1,0 +1,27 @@
+.heading {
+	color: var(--color-text-primary);
+}
+
+.h1 {
+	@extend %h1-template;
+}
+
+.h2 {
+	@extend %h2-template;
+}
+
+.h3 {
+	@extend %h3-template;
+}
+
+.h4 {
+	@extend %h4-template;
+}
+
+.h5 {
+	@extend %h5-template;
+}
+
+.h6 {
+	@extend %h6-template;
+}

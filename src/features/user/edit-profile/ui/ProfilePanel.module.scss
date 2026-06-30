@@ -1,48 +1,99 @@
 .ProfilePanel {
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
 
 	width: 100%;
-	max-width: 560px;
+	height: 100%;
 
-	padding: 32px;
+	background: var(--bg-grey);
+	overflow-y: auto;
+}
 
-	background: var(--color-background-surface-1);
-	border: 1px solid var(--color-background-surface-2);
-	border-radius: 16px;
+.ProfilePanel__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 16px 20px;
+
+	border-bottom: 1px solid var(--color-border-subtle);
+
+	flex-shrink: 0;
+}
+
+.ProfilePanel__saveBtn {
+	padding: 6px 16px;
+
+	background: transparent;
+
+	color: var(--main-blue);
+	border: 1px solid var(--main-blue);
+	border-radius: 6px;
+
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+
+	cursor: pointer;
+
+	transition: background 0.15s ease;
+}
+
+.ProfilePanel__saveBtn:hover:not(:disabled) {
+	background: var(--color-primary-ghost);
+}
+
+.ProfilePanel__saveBtn:disabled {
+	color: var(--text-grey);
+	border-color: var(--color-border);
+	cursor: not-allowed;
+}
+
+.ProfilePanel__closeBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 32px;
+	height: 32px;
+
+	background: transparent;
+
+	color: var(--text-grey);
+	border: none;
+	border-radius: 6px;
+
+	cursor: pointer;
+
+	transition: background 0.15s ease;
+}
+
+.ProfilePanel__closeBtn:hover {
+	background: var(--color-hover);
+	color: var(--text-black);
+}
+
+.ProfilePanel__closeIcon {
+	transform: rotate(90deg);
 }
 
 .ProfilePanel__body {
 	display: flex;
+
+	flex: 1;
 	flex-direction: column;
-	gap: 0;
 }
 
 .ProfilePanel__row {
 	display: flex;
 	align-items: center;
 
-	padding: 14px 0;
+	padding: 14px 20px;
 
-	border-bottom: 1px solid var(--color-background-surface-2);
+	border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .ProfilePanel__row:last-child {
-	border-bottom: none;
-}
-
-.ProfilePanel__editRow {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-
-	padding: 8px 0;
-
-	border-bottom: 1px solid var(--color-background-surface-2);
-}
-
-.ProfilePanel__editRow:last-child {
 	border-bottom: none;
 }
 
@@ -51,21 +102,81 @@
 
 	color: var(--text-grey);
 
-	font-size: 14px;
+	font-size: 13px;
 }
 
-.ProfilePanel__value {
-	color: var(--text-black);
-
-	font-size: 14px;
-	font-weight: 500;
-}
-
-.ProfilePanel__editInput {
-	flex: 1;
-}
-
-.ProfilePanel__actions {
+.ProfilePanel__valueCell {
 	display: flex;
-	gap: 12px;
+
+	flex: 1;
+	align-items: center;
+	gap: 4px;
+
+	min-width: 0;
+}
+
+.ProfilePanel__inputWrapper {
+	flex: 1;
+
+	min-width: 0;
+}
+
+.ProfilePanel__readonlyValue {
+	flex: 1;
+
+	min-width: 0;
+
+	overflow: hidden;
+
+	color: var(--text-grey);
+
+	font-size: 13px;
+	font-weight: 500;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ProfilePanel__input {
+	flex: 1;
+
+	min-width: 0;
+
+	padding: 0;
+
+	background: transparent;
+
+	color: var(--text-black);
+	border: none;
+	outline: none;
+
+	font-size: 13px;
+	font-weight: 500;
+	font-family: inherit;
+}
+
+.ProfilePanel__clearBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-shrink: 0;
+
+	width: 16px;
+	height: 16px;
+
+	background: transparent;
+
+	color: var(--text-alt-grey);
+	border: none;
+
+	font-size: 14px;
+	line-height: 1;
+
+	cursor: pointer;
+
+	transition: color 0.15s ease;
+}
+
+.ProfilePanel__clearBtn:hover {
+	color: var(--text-black);
 }

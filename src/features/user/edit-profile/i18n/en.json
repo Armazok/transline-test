@@ -1,0 +1,31 @@
+{
+	"ProfilePage": {
+		"saveBtn": "Save",
+		"closeBtn": "Close",
+		"clearField": "Clear",
+		"fields": {
+			"lastName": "Last name",
+			"firstName": "First name",
+			"middleName": "Middle name",
+			"phone": "Phone number",
+			"email": "Email",
+			"role": "Role",
+			"taxId": "IIN / BIN",
+			"iin": "IIN",
+			"bin": "BIN"
+		},
+		"roles": {
+			"customer": "Customer",
+			"carrier": "Carrier"
+		},
+		"toast": {
+			"saved": "Changes saved",
+			"error": "Failed to save changes"
+		},
+		"errors": {
+			"required": "This field is required",
+			"lettersOnly": "Letters only",
+			"email": "Enter a valid email"
+		}
+	}
+}

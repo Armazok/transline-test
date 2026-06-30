@@ -1,0 +1,61 @@
+%button-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 36px;
+	height: 36px;
+
+	background: transparent;
+
+	color: var(--text-grey);
+	border: none;
+	border-radius: 8px;
+
+	cursor: pointer;
+
+	transition:
+		background 0.15s ease,
+		color 0.15s ease;
+
+	&:hover {
+		background: var(--color-hover);
+		color: var(--text-black);
+	}
+}
+
+%button-primary-fill {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+
+	padding-top: 18px;
+	padding-bottom: 18px;
+
+	background: var(--main-blue);
+
+	color: var(--text-white);
+	border: none;
+	border-radius: 8px;
+
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+
+	transition:
+		background 0.2s ease,
+		opacity 0.2s ease;
+
+	cursor: pointer;
+
+	&:disabled {
+		background: var(--color-border);
+
+		color: var(--text-grey);
+
+		cursor: not-allowed;
+	}
+}

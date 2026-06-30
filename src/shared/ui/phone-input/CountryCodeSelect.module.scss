@@ -1,0 +1,139 @@
+.CountryCodeSelect {
+	position: relative;
+
+	&__trigger {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		padding-top: 18px;
+		padding-right: 16px;
+		padding-bottom: 18px;
+		padding-left: 16px;
+
+		background: transparent;
+		border: none;
+		border-radius: 8px 0 0 8px;
+
+		cursor: pointer;
+		user-select: none;
+		white-space: nowrap;
+	}
+
+	&__flag {
+		font-size: 22px;
+		line-height: 1;
+	}
+
+	&__dial {
+		color: var(--text-black);
+
+		font-size: 16px;
+	}
+
+	&__arrow {
+		width: 7px;
+		height: 7px;
+
+		border-left: 1.5px solid var(--text-grey);
+		border-bottom: 1.5px solid var(--text-grey);
+
+		transform: rotate(-45deg) translateY(-1px);
+
+		transition: transform 0.25s ease;
+	}
+
+	&__arrow_open {
+		transform: rotate(135deg) translateY(1px);
+	}
+
+	&__dropdown {
+		position: absolute;
+		top: calc(100% + 4px);
+		left: 0;
+		z-index: 100;
+
+		width: 240px;
+
+		max-height: 220px;
+
+		background: var(--bg-white);
+
+		opacity: 0;
+		border: 1px solid var(--stroke-grey);
+		border-radius: 8px;
+		box-shadow: var(--shadow-form);
+
+		transform: translateY(-6px) scale(0.98);
+
+		// visibility скрывает после окончания fade-out
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			visibility 0s linear 0.2s;
+
+		overflow-y: auto;
+		visibility: hidden;
+	}
+
+	&__dropdown_open {
+		opacity: 1;
+		visibility: visible;
+
+		transform: translateY(0) scale(1);
+
+		// visibility открывается мгновенно
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			visibility 0s linear 0s;
+	}
+
+	&__option {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		width: 100%;
+
+		padding-top: 12px;
+		padding-right: 14px;
+		padding-bottom: 12px;
+		padding-left: 14px;
+
+		background: var(--bg-white);
+		border: none;
+
+		transition: background 0.15s ease;
+
+		cursor: pointer;
+	}
+
+	&__option_active {
+		background: var(--sidebar-item-chosen);
+	}
+
+	&__option:hover {
+		background: var(--bg-grey);
+	}
+
+	&__optionFlag {
+		font-size: 20px;
+		line-height: 1;
+	}
+
+	&__optionName {
+		flex: 1;
+
+		color: var(--text-black);
+
+		font-size: 14px;
+		text-align: left;
+	}
+
+	&__optionDial {
+		color: var(--text-grey);
+
+		font-size: 13px;
+	}
+}

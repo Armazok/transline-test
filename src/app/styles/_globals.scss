@@ -1,0 +1,57 @@
+@import 'reset/reset';
+@import 'fonts/fonts';
+@import 'design-tokens/default/variables';
+@import 'design-tokens/dark/variables';
+@import 'utils/container';
+@import 'react-toastify/dist/ReactToastify.css';
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--bg-grey: #111214;
+		--bg-white: #1c1e21;
+
+		--color-background-surface-0: #111214;
+		--color-background-surface-1: #1c1e21;
+		--color-background-surface-2: #2a2d31;
+
+		--main-blue: #05c0e6;
+		--sidebar-item-chosen: #0e3040;
+
+		--text-black: #f0f0f1;
+		--text-secondary: #b0b3b8;
+		--text-grey: #8a8d91;
+		--text-alt-grey: #5c5f63;
+		--text-white: #fff;
+
+		--color-text-primary: #f0f0f1;
+		--color-text-body: #b0b3b8;
+		--color-text-disabled: #5c5f63;
+
+		--stroke-grey: #2e3135;
+		--color-border: #2e3135;
+		--color-border-subtle: #2a2d31;
+
+		--color-hover: #2e3135;
+		--color-error: #f87171;
+		--color-primary-ghost: rgb(5 192 230 / 10%);
+
+		--shadow-form: 0px 4px 30px rgba(0, 0, 0, 0.4);
+		--shadow-dropdown: 0 4px 16px rgb(0 0 0 / 40%);
+	}
+}
+
+html,
+body {
+	height: 100%;
+
+	background: var(--bg-white);
+
+	font-size: var(--font-size);
+
+	font-family: var(--font-primary), serif;
+	overflow-x: hidden;
+}
+
+#root {
+	height: 100%;
+}

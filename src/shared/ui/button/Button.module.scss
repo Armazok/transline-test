@@ -1,0 +1,26 @@
+.button {
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+.primaryFill {
+	@extend %button-primary-fill;
+}
+
+.icon {
+	@extend %button-icon;
+}
+
+.clear {
+	display: inline;
+
+	width: auto;
+
+	padding: 0;
+
+	background: transparent;
+	border: none;
+}

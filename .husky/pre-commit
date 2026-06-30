@@ -1,0 +1,6 @@
+npm exec lint-staged
+
+# Auto-stage package-lock.json if it was modified but not staged
+if git diff --name-only | grep -q "^package-lock\.json$"; then
+  git add package-lock.json
+fi

@@ -5,5 +5,5 @@ import { getAccessToken } from '@/shared/lib';
 
 export const PublicRoute = () => {
 	const token = getAccessToken();
-	return token ? <Navigate to={ROUTER_PATH.dashboard.main} replace /> : <Outlet />;
+	return token ? <Navigate to={ROUTER_PATH.dashboard.orders.activeApplications} replace /> : <Outlet />;
 };

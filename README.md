@@ -1,46 +1,105 @@
-# Getting Started with Create React App
+# Тестовое задание — Многошаговая регистрация и профиль
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React + TypeScript приложение с многошаговой регистрацией, профилем пользователя и дашбордом.
 
-## Available Scripts
+## Запуск
 
-In the project directory, you can run:
+```bash
+npm install
+npm run dev       # http://localhost:3000
+```
 
-### `npm start`
+### Дополнительные команды
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm run build        # production сборка
+npm run typecheck    # проверка типов
+npm run lint         # ESLint
+npm run storybook    # Storybook компонентов (http://localhost:6006)
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Реализованные шаги регистрации
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Шаг 1 — Ввод телефона
 
-### `npm run build`
+- Поле телефона с маской `+7 (XXX) XXX-XX-XX` и выбором страны
+- Чекбокс «Согласен с условиями обработки данных»
+- Кнопка «Далее» активна только при валидном номере и отмеченном чекбоксе
+- Отправка OTP имитируется через `setTimeout`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Шаг 2 — Выбор роли
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Две карточки: **Заказчик** и **Перевозчик**
+- Выбор только одной роли, переход к следующему шагу по кнопке
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Шаг 3 — Подтверждение OTP
 
-### `npm run eject`
+- 6 отдельных инпутов, автоматический переход между ними
+- Backspace корректно переходит к предыдущему полю
+- Таймер 60 секунд до кнопки «Отправить повторно»
+- Отображение ошибки при неверном коде
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Шаг 4 — Анкета пользователя
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Поля: Фамилия, Имя, Отчество (опционально), Email, Пароль, Подтверждение пароля, ИИН/БИН
+- Лейбл поля ИИН/БИН меняется в зависимости от роли (Заказчик → БИН, Перевозчик → ИИН)
+- Валидация:
+    - Email — корректный формат
+    - Пароль — минимум 8 символов, содержит буквы и цифры
+    - Подтверждение пароля — совпадение с паролем
+    - ИИН/БИН — ровно 12 цифр
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Экран профиля
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Отображаются все данные, введённые при регистрации
+- Шторка редактирования: Фамилия, Имя, Email
+- При наличии ошибок валидации шторка не закрывается — фокус переходит на первое невалидное поле
+- Кнопка «Выйти» очищает состояние и возвращает на первый шаг
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Реализованные функции
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Функция                                         | Статус |
+| ----------------------------------------------- | ------ |
+| Многошаговая регистрация                        | ✅     |
+| Валидация форм (React Hook Form)                | ✅     |
+| Локализация ru / en (i18next)                   | ✅     |
+| Переключатель языка в шапке                     | ✅     |
+| Тёмная / светлая тема                           | ✅     |
+| Адаптивная вёрстка (desktop / tablet / mobile)  | ✅     |
+| Анимации переходов между шагами (Framer Motion) | ✅     |
+| Сохранение прогресса регистрации в localStorage | ✅     |
+| Toast-уведомления об успехе / ошибке            | ✅     |
+| OTP таймер и повторная отправка                 | ✅     |
+
+---
+
+## Архитектура
+
+Проект построен по методологии **Feature-Sliced Design (FSD)**:
+
+```
+src/
+  app/          # провайдеры, роутер, глобальные стили, i18n
+  pages/        # страницы (orders/, contractors/, management/, error/)
+  widgets/      # составные блоки (DashboardLayout, RegisterPanel, Sidebar)
+  features/     # фичи (auth/register, auth/verify-otp, user/edit-profile)
+  entities/     # сущности (user, phone)
+  shared/       # ui-компоненты, хуки, конфиг, утилиты
+```
+
+## Стек
+
+- **React 18** + **TypeScript**
+- **Vite** — сборщик
+- **React Router v7** — маршрутизация
+- **React Hook Form** — формы и валидация
+- **Framer Motion** — анимации
+- **react-toastify** — toast-уведомления
+- **i18next** — локализация (ru / en)
+- **CSS Modules** + **SCSS** — стилизация
+- **Storybook** — документация UI-компонентов
+- **ESLint** + **Prettier** + **Husky** — качество кода

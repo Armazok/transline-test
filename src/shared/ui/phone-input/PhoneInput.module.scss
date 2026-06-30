@@ -1,0 +1,28 @@
+.PhoneInput {
+	display: flex;
+	align-items: center;
+
+	background: var(--bg-white);
+	border: 1px solid var(--stroke-grey);
+	border-radius: 8px;
+	box-shadow: var(--shadow-form);
+
+	&__inputWrapper {
+		flex: 1;
+	}
+
+	&__input {
+		padding-top: 18px;
+		padding-right: 16px;
+		padding-bottom: 18px;
+
+		color: var(--text-black);
+
+		font-size: 16px;
+		font-family: inherit;
+	}
+
+	&__input::placeholder {
+		color: var(--text-alt-grey);
+	}
+}

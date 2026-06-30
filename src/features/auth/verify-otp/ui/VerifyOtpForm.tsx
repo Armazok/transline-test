@@ -1,11 +1,20 @@
 import { memo } from 'react';
 
 import classNames from 'classnames';
+import { Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Heading, HEADING_VARIANT, OtpInput, Paragraph, PARAGRAPH_VARIANT } from '@/shared/ui';
+import {
+	Button,
+	BUTTON_VARIANT,
+	Heading,
+	HEADING_VARIANT,
+	OtpInput,
+	Paragraph,
+	PARAGRAPH_VARIANT,
+} from '@/shared/ui';
 
-import { useVerifyOtp } from '../model/useVerifyOtp';
+import { useVerifyOtp } from '../model/hooks/useVerifyOtp';
 
 import cls from './VerifyOtpForm.module.scss';
 
@@ -19,18 +28,18 @@ interface VerifyOtpFormProps {
 export const VerifyOtpForm = memo(({ phone, onResend, onSuccess, className }: VerifyOtpFormProps) => {
 	const { t } = useTranslation('register');
 	const {
+		control,
 		code,
 		error,
 		isSubmitting,
 		timeLeft,
 		canResend,
-		handleCodeChange,
 		handleResend,
-		handleSubmit,
+		onSubmit,
 	} = useVerifyOtp({ phone, onResend, onSuccess });
 
 	return (
-		<div className={classNames(cls.VerifyOtpForm, className)}>
+		<form className={classNames(cls.VerifyOtpForm, className)} onSubmit={onSubmit} noValidate>
 			<div className={cls.VerifyOtpForm__header}>
 				<Heading variant={HEADING_VARIANT.h3} className={cls.VerifyOtpForm__title}>
 					{t('VerifyOtpForm.title')}
@@ -40,27 +49,36 @@ export const VerifyOtpForm = memo(({ phone, onResend, onSuccess, className }: Ve
 				</Paragraph>
 			</div>
 
-			<OtpInput
-				value={code}
-				onChange={handleCodeChange}
-				error={!!error}
-				disabled={isSubmitting}
-				className={cls.VerifyOtpForm__otp}
+			<Controller
+				name="code"
+				control={control}
+				render={({ field: { onChange, value } }) => (
+					<OtpInput
+						value={value}
+						onChange={onChange}
+						error={!!error}
+						disabled={isSubmitting}
+						className={cls.VerifyOtpForm__otp}
+					/>
+				)}
 			/>
 
 			{error && (
-				<p className={cls.VerifyOtpForm__error}>{error}</p>
+				<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.VerifyOtpForm__error}>
+					{error}
+				</Paragraph>
 			)}
 
 			<div className={cls.VerifyOtpForm__resend}>
 				{canResend ? (
-					<button
+					<Button
+						variant={BUTTON_VARIANT.CLEAR}
 						type="button"
 						className={cls.VerifyOtpForm__resendBtn}
 						onClick={handleResend}
 					>
 						{t('VerifyOtpForm.resend')}
-					</button>
+					</Button>
 				) : (
 					<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.VerifyOtpForm__timer}>
 						{t('VerifyOtpForm.timer', { seconds: timeLeft })}
@@ -69,14 +87,14 @@ export const VerifyOtpForm = memo(({ phone, onResend, onSuccess, className }: Ve
 			</div>
 
 			<Button
+				type="submit"
 				disabled={code.length !== 6 || isSubmitting}
 				isDisabled={code.length !== 6 || isSubmitting}
 				className={cls.VerifyOtpForm__submit}
-				onClick={handleSubmit}
 			>
 				{t('VerifyOtpForm.submit')}
 			</Button>
-		</div>
+		</form>
 	);
 });
 

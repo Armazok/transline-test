@@ -3,8 +3,25 @@ export const ROUTER_PATH = {
 		register: '/register',
 	},
 	dashboard: {
-		main: '/main',
-		profile: '/profile',
+		orders: {
+			activeApplications: '/orders/active-applications',
+			archived: '/orders/archived',
+		},
+		contractors: {
+			customers: '/contractors/customers',
+			carriers: '/contractors/carriers',
+		},
+		fleet: {
+			transport: '/fleet/transport',
+		},
+		management: {
+			references: {
+				transportTypes: '/management/references/transport-types',
+				cargoTypes: '/management/references/cargo-types',
+				cities: '/management/references/cities',
+			},
+			managers: '/management/managers',
+		},
 	},
 	error: {
 		error_404: '*',
@@ -14,7 +31,6 @@ export const ROUTER_PATH = {
 } as const;
 
 type OnlyStrings<T> = T extends string ? T : never;
-type Values<T> = T[keyof T];
-type DeepValues<T> = Values<{ [K in keyof T]: Values<T[K]> }>;
+type Leaves<T> = T extends object ? Leaves<T[keyof T]> : T;
 
-export type RouterPath = OnlyStrings<DeepValues<typeof ROUTER_PATH>>;
+export type RouterPath = OnlyStrings<Leaves<typeof ROUTER_PATH>>;

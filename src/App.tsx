@@ -1,10 +1,8 @@
 import { ToastContainer } from 'react-toastify';
 
-import { UserProvider } from '@/entities/user';
-
 import { ErrorBoundary } from '@/shared/ui';
 
-import { ErrorFallback } from './app/providers/ErrorFallback';
+import { ErrorFallback, UserProvider } from './app/providers';
 import { AppRouter } from './app/router/AppRouter';
 
 function App() {

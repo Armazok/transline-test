@@ -1,0 +1,47 @@
+$header-height: 56px;
+
+.DashboardHeader {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	height: $header-height;
+
+	padding: 0 24px;
+
+	background: var(--bg-grey);
+	border-bottom: 1px solid var(--color-border);
+
+	flex-shrink: 0;
+}
+
+.DashboardHeader__left {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.DashboardHeader__menuBtn {
+	flex-shrink: 0;
+
+	color: var(--text-black);
+}
+
+.DashboardHeader__brand {
+	color: var(--text-black);
+
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.DashboardHeader__right {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}

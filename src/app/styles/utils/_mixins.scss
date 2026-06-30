@@ -1,0 +1,63 @@
+@use 'sass:math';
+@use 'sass:list';
+
+// Адаптивное свойство (fluid typography / spacing)
+@mixin adaptiveValue(
+	$property,
+	$startSize,
+	$minSize,
+	$widthFrom: $containerWidth,
+	$widthTo: $minWidth,
+	$keepSize: 0
+) {
+	$widthFromMedia: em($widthFrom);
+	$widthToMedia: em($widthTo);
+
+	$minSizeValue: rem($minSize);
+	$startSizeValue: rem($startSize);
+
+	// Пересчитываем в em-единицы без rem
+	$minWidth: math.div($minWidth, 16);
+	$maxWidth: math.div($maxWidth, 16);
+	$containerWidth: math.div($containerWidth, 16);
+	$addSize: math.div($startSize - $minSize, 16);
+	$widthTo: math.div($widthTo, 16);
+	$widthFrom: math.div($widthFrom, 16);
+
+	@if ($maxWidthContainer > 0 or $widthFrom != $containerWidth or $widthTo != $minWidth) and
+		$widthFrom >
+		$widthTo
+	{
+		@if $widthFrom == $containerWidth or $keepSize == 1 or $keepSize == 2 {
+			@media (min-width: $widthFromMedia) {
+				#{$property}: $startSizeValue;
+			}
+		}
+
+		@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+			#{$property}: calc(
+				#{$minSizeValue} + #{$addSize} *
+					(((100vw - #{$widthTo + rem})) / ((#{$widthFrom - $widthTo})))
+			);
+		}
+
+		@if $widthTo == $minWidth or $keepSize == 1 or $keepSize == 3 {
+			@media (max-width: $widthToMedia) {
+				#{$property}: $minSizeValue;
+			}
+		}
+	} @else {
+		#{$property}: calc(
+			#{$minSizeValue} +
+				#{$addSize} *
+				(((100vw - #{$widthTo + rem})) / ((#{$maxWidth - $widthTo})))
+		);
+	}
+}
+
+@mixin adaptiveImage($width) {
+	width: $width;
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+}

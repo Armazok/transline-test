@@ -7,8 +7,8 @@ import { type UserRole } from '@/features/auth/select-role';
 
 import { Button, Heading, HEADING_VARIANT, Input, Paragraph, PARAGRAPH_VARIANT } from '@/shared/ui';
 
-import { useRegisterProfileForm } from '../model/useRegisterProfileForm';
-import { type ProfileFormValues } from '../model/validate';
+import { useRegisterProfileForm } from '../model/hooks/useRegisterProfileForm';
+import { type ProfileFormValues } from '../model/types/types';
 
 import cls from './RegisterProfileForm.module.scss';
 
@@ -20,20 +20,15 @@ interface RegisterProfileFormProps {
 
 export const RegisterProfileForm = memo(({ role, onSuccess, className }: RegisterProfileFormProps) => {
 	const { t } = useTranslation('register');
-	const {
-		values,
-		errors,
-		isSubmitting,
-		taxIdLabel,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-	} = useRegisterProfileForm({ role, onSuccess });
+	const { fields, getError, isSubmitting, taxIdLabel, onSubmit } = useRegisterProfileForm({
+		role,
+		onSuccess,
+	});
 
 	return (
 		<form
 			className={classNames(cls.RegisterProfileForm, className)}
-			onSubmit={handleSubmit}
+			onSubmit={onSubmit}
 			noValidate
 		>
 			<div className={cls.RegisterProfileForm__header}>
@@ -47,80 +42,56 @@ export const RegisterProfileForm = memo(({ role, onSuccess, className }: Registe
 
 			<div className={cls.RegisterProfileForm__fields}>
 				<Input
-					name="lastName"
+					{...fields.lastName}
 					placeholder={t('RegisterProfileForm.fields.lastName')}
-					value={values.lastName}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.lastName}
+					error={getError('lastName')}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="firstName"
+					{...fields.firstName}
 					placeholder={t('RegisterProfileForm.fields.firstName')}
-					value={values.firstName}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.firstName}
+					error={getError('firstName')}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="middleName"
+					{...fields.middleName}
 					placeholder={t('RegisterProfileForm.fields.middleName')}
-					value={values.middleName}
-					onChange={handleChange}
-					onBlur={handleBlur}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="email"
-					 
+					{...fields.email}
 					type="email"
 					// eslint-disable-next-line i18next/no-literal-string
 					autoComplete="email"
 					placeholder={t('RegisterProfileForm.fields.email')}
-					value={values.email}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.email}
+					error={getError('email')}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="password"
-					 
+					{...fields.password}
 					type="password"
 					// eslint-disable-next-line i18next/no-literal-string
 					autoComplete="new-password"
 					placeholder={t('RegisterProfileForm.fields.password')}
-					value={values.password}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.password}
+					error={getError('password')}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="confirmPassword"
-					 
+					{...fields.confirmPassword}
 					type="password"
 					// eslint-disable-next-line i18next/no-literal-string
 					autoComplete="new-password"
 					placeholder={t('RegisterProfileForm.fields.confirmPassword')}
-					value={values.confirmPassword}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.confirmPassword}
+					error={getError('confirmPassword')}
 					disabled={isSubmitting}
 				/>
 				<Input
-					name="taxId"
+					{...fields.taxId}
 					// eslint-disable-next-line i18next/no-literal-string
 					inputMode="numeric"
 					maxLength={12}
 					placeholder={taxIdLabel}
-					value={values.taxId}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					error={errors.taxId}
+					error={getError('taxId')}
 					disabled={isSubmitting}
 				/>
 			</div>
