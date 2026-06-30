@@ -11,15 +11,15 @@ export const PageError404 = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className={cls.page}>
-			<div className={cls.inner}>
-				<span className={cls.code}>{t('Error404.code')}</span>
+		<div className={cls.PageError}>
+			<div className={cls.PageError__inner}>
+				<span className={cls.PageError__code}>{t('Error404.code')}</span>
 
-				<Heading variant={HEADING_VARIANT.h2} className={cls.title}>
+				<Heading variant={HEADING_VARIANT.h2} className={cls.PageError__title}>
 					{t('Error404.title')}
 				</Heading>
 
-				<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.desc}>
+				<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.PageError__desc}>
 					{t('Error404.desc')}
 				</Paragraph>
 

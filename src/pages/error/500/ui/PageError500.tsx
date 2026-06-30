@@ -11,15 +11,15 @@ export const PageError500 = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className={cls.page}>
-			<div className={cls.inner}>
-				<span className={cls.code}>{t('Error500.code')}</span>
+		<div className={cls.PageError}>
+			<div className={cls.PageError__inner}>
+				<span className={cls.PageError__code}>{t('Error500.code')}</span>
 
-				<Heading variant={HEADING_VARIANT.h2} className={cls.title}>
+				<Heading variant={HEADING_VARIANT.h2} className={cls.PageError__title}>
 					{t('Error500.title')}
 				</Heading>
 
-				<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.desc}>
+				<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.PageError__desc}>
 					{t('Error500.desc')}
 				</Paragraph>
 

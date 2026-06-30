@@ -38,13 +38,13 @@ export const AuthLayout = memo(() => {
 				</div>
 
 				<div className={cls.AuthLayout__footer}>
-					<div className={cls.AuthLayout__footer__src}>
-						<CarIcon className={cls.AuthLayout__footer__src_car} />
-						<PlaceIcon className={cls.AuthLayout__footer__src_place} />
+					<div className={cls.AuthLayout__footerVisuals}>
+						<CarIcon className={cls.AuthLayout__footerCar} />
+						<PlaceIcon className={cls.AuthLayout__footerPlace} />
 					</div>
-					<div className={cls.AuthLayout__footer__linear}>
-						<div className={cls.AuthLayout__footer__linear_white} />
-						<div className={cls.AuthLayout__footer__linear_blue} />
+					<div className={cls.AuthLayout__footerLine}>
+						<div className={cls.AuthLayout__footerLine_white} />
+						<div className={cls.AuthLayout__footerLine_blue} />
 					</div>
 				</div>
 			</div>

@@ -58,32 +58,32 @@ export const DashboardLayout = memo(() => {
 	);
 
 	return (
-		<div className={cls.root}>
+		<div className={cls.DashboardLayout}>
 			<DashboardHeader
 				onToggleSidebar={toggleSidebar}
 				onMenuAction={handleMenuAction}
 				activeMenuActions={activeActions}
 			/>
 
-			<div className={cls.body}>
-				{isSidebarOpen && <div className={cls.backdrop} onClick={closeSidebar} />}
+			<div className={cls.DashboardLayout__body}>
+				{isSidebarOpen && <div className={cls.DashboardLayout__backdrop} onClick={closeSidebar} />}
 
 				<div
-					className={classNames(cls.sidebarWrapper, {
-						[cls.sidebarWrapper_closed]: !isSidebarOpen,
+					className={classNames(cls.DashboardLayout__sidebarWrapper, {
+						[cls.DashboardLayout__sidebarWrapper_closed]: !isSidebarOpen,
 					})}
 				>
-					<Sidebar className={cls.sidebar} />
+					<Sidebar className={cls.DashboardLayout__sidebar} />
 				</div>
 
-				<div className={cls.main}>
-					<main className={cls.main__pages}>
+				<div className={cls.DashboardLayout__main}>
+					<main className={cls.DashboardLayout__pages}>
 						<Outlet />
 					</main>
 
 					<div
-						className={classNames(cls.profileSlot, {
-							[cls.profileSlot_open]: isProfileOpen,
+						className={classNames(cls.DashboardLayout__profileSlot, {
+							[cls.DashboardLayout__profileSlot_open]: isProfileOpen,
 						})}
 					>
 						<ProfilePanel onClose={closeProfile} />

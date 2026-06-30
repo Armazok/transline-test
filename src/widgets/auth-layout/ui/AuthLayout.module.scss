@@ -103,13 +103,13 @@
 		}
 	}
 
-	&__footer__src {
+	&__footerVisuals {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
 
-	&__footer__src_car {
+	&__footerCar {
 		flex-shrink: 0;
 
 		width: 96px;
@@ -124,7 +124,7 @@
 		}
 	}
 
-	&__footer__src_place {
+	&__footerPlace {
 		flex-shrink: 0;
 
 		width: 72px;
@@ -135,14 +135,14 @@
 		@include adaptiveValue(margin-right, 64, 24);
 	}
 
-	&__footer__linear {
+	&__footerLine {
 		display: flex;
 
 		width: 100%;
 		height: 4px;
 	}
 
-	&__footer__linear_white {
+	&__footerLine_white {
 		flex: 1;
 
 		background: var(--bg-white);
@@ -152,7 +152,7 @@
 		}
 	}
 
-	&__footer__linear_blue {
+	&__footerLine_blue {
 		flex: 1;
 
 		background: var(--main-blue);

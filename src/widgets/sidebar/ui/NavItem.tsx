@@ -47,7 +47,7 @@ export const NavItem = memo((props: NavItemProps) => {
 					</span>
 					<span className={cls.NavItem__label}>{label}</span>
 					<ChevronDownIcon
-						className={classNames(cls.chevron, { [cls.chevron_up]: open })}
+						className={classNames(cls.NavItem__chevron, { [cls.NavItem__chevron_up]: open })}
 					/>
 				</Button>
 

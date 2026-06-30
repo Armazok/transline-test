@@ -17,31 +17,31 @@ $header-height: 56px;
 	border-bottom: 1px solid var(--color-border);
 
 	flex-shrink: 0;
-}
 
-.DashboardHeader__left {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
+	&__left {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
 
-.DashboardHeader__menuBtn {
-	flex-shrink: 0;
+	&__menuBtn {
+		flex-shrink: 0;
 
-	color: var(--text-black);
-}
+		color: var(--text-black);
+	}
 
-.DashboardHeader__brand {
-	color: var(--text-black);
+	&__brand {
+		color: var(--text-black);
 
-	font-size: 15px;
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-}
+		font-size: 15px;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
 
-.DashboardHeader__right {
-	display: flex;
-	align-items: center;
-	gap: 4px;
+	&__right {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
 }

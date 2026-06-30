@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { Button, BUTTON_VARIANT, Paragraph, PARAGRAPH_VARIANT } from '@/shared/ui';
 
-import cls from './SelectRoleForm.module.scss';
+import cls from './RoleCard.module.scss';
 
 import type { UserRole } from '../model/types/types';
 

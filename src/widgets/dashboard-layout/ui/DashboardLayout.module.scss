@@ -3,7 +3,7 @@ $header-height: 56px;
 $breakpoint-tablet: 834px;
 $breakpoint-mobile: 600px;
 
-.root {
+.DashboardLayout {
 	display: flex;
 	flex-direction: column;
 
@@ -11,119 +11,123 @@ $breakpoint-mobile: 600px;
 	overflow: hidden;
 
 	background: var(--bg-grey);
-}
 
-.body {
-	position: relative;
+	&__body {
+		position: relative;
 
-	display: flex;
-	flex: 1;
+		display: flex;
+		flex: 1;
 
-	min-height: 0;
-	overflow: hidden;
-}
+		min-height: 0;
+		overflow: hidden;
+	}
 
-.backdrop {
-	display: none;
-}
+	&__backdrop {
+		display: none;
+	}
 
-.sidebarWrapper {
-	width: $sidebar-width;
+	&__sidebarWrapper {
+		width: $sidebar-width;
 
-	overflow: hidden;
+		overflow: hidden;
 
-	flex-shrink: 0;
+		flex-shrink: 0;
 
-	transition: width 0.25s ease;
-}
+		transition: width 0.25s ease;
+	}
 
-.sidebarWrapper_closed {
-	width: 0;
-}
+	&__sidebarWrapper_closed {
+		width: 0;
+	}
 
-.sidebar {
-	width: $sidebar-width;
-	height: 100%;
+	&__sidebar {
+		width: $sidebar-width;
+		height: 100%;
 
-	overflow-y: auto;
-}
+		overflow-y: auto;
+	}
 
-.main {
-	display: flex;
-	flex: 1;
+	&__main {
+		display: flex;
+		flex: 1;
 
-	min-width: 0;
-	overflow: hidden;
-}
+		min-width: 0;
+		overflow: hidden;
+	}
 
-.main__pages {
-	flex: 1;
+	&__pages {
+		flex: 1;
 
-	min-width: 0;
+		min-width: 0;
 
-	overflow-y: auto;
+		overflow-y: auto;
 
-	background: var(--bg-white);
-}
+		background: var(--bg-white);
+	}
 
-.profileSlot {
-	flex-shrink: 0;
+	&__profileSlot {
+		flex-shrink: 0;
 
-	width: 0;
-	overflow: hidden;
+		width: 0;
+		overflow: hidden;
 
-	border-left: 1px solid transparent;
+		border-left: 1px solid transparent;
 
-	transition:
-		width 0.3s ease,
-		border-color 0.3s ease;
-}
+		transition:
+			width 0.3s ease,
+			border-color 0.3s ease;
+	}
 
-.profileSlot_open {
-	width: 50%;
-	border-left-color: var(--color-border-subtle);
+	&__profileSlot_open {
+		width: 50%;
+		border-left-color: var(--color-border-subtle);
+	}
 }
 
 @media (max-width: $breakpoint-tablet) {
-	.backdrop {
-		position: fixed;
-		z-index: 49;
+	.DashboardLayout {
+		&__backdrop {
+			position: fixed;
+			z-index: 49;
 
-		display: block;
+			display: block;
 
-		background: rgb(0 0 0 / 40%);
-		inset: 0;
-	}
+			background: rgb(0 0 0 / 40%);
+			inset: 0;
+		}
 
-	.sidebarWrapper {
-		position: fixed;
-		top: $header-height;
-		left: 0;
-		z-index: 50;
+		&__sidebarWrapper {
+			position: fixed;
+			top: $header-height;
+			left: 0;
+			z-index: 50;
 
-		width: $sidebar-width;
-		height: calc(100vh - #{$header-height});
+			width: $sidebar-width;
+			height: calc(100vh - #{$header-height});
 
-		transform: translateX(0);
-		transition: transform 0.25s ease;
-	}
+			transform: translateX(0);
+			transition: transform 0.25s ease;
+		}
 
-	.sidebarWrapper_closed {
-		width: $sidebar-width;
+		&__sidebarWrapper_closed {
+			width: $sidebar-width;
 
-		transform: translateX(-100%);
+			transform: translateX(-100%);
+		}
 	}
 }
 
 @media (max-width: $breakpoint-mobile) {
-	.profileSlot_open {
-		position: fixed;
-		inset: $header-height 0 0 0;
+	.DashboardLayout {
+		&__profileSlot_open {
+			position: fixed;
+			inset: $header-height 0 0 0;
 
-		z-index: 40;
+			z-index: 40;
 
-		width: 100%;
+			width: 100%;
 
-		border-left: none;
+			border-left: none;
+		}
 	}
 }

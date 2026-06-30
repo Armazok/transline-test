@@ -1,4 +1,4 @@
-.page {
+.PageError {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -6,37 +6,36 @@
 	min-height: 100vh;
 
 	background: var(--color-background-surface-0);
-}
 
-.inner {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-	max-width: 440px;
+		max-width: 440px;
 
-	padding: 0 20px;
+		padding: 0 20px;
 
-	text-align: center;
-}
+		text-align: center;
+	}
 
-.code {
-	color: var(--main-blue);
+	&__code {
+		color: var(--main-blue);
 
-	font-size: 120px;
-	font-weight: 700;
-	line-height: 1;
+		font-weight: 700;
+		line-height: 1;
 
-	@include adaptiveValue(font-size, 120, 72);
-}
+		@include adaptiveValue(font-size, 120, 72);
+	}
 
-.title {
-	margin-top: 16px;
-	margin-bottom: 12px;
-}
+	&__title {
+		margin-top: 16px;
+		margin-bottom: 12px;
+	}
 
-.desc {
-	margin-bottom: 32px;
+	&__desc {
+		margin-bottom: 32px;
 
-	color: var(--color-text-disabled);
+		color: var(--color-text-disabled);
+	}
 }
