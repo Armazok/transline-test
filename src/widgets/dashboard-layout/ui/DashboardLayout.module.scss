@@ -105,6 +105,8 @@ $breakpoint-mobile: 600px;
 			width: $sidebar-width;
 			height: calc(100vh - #{$header-height});
 
+			overflow-y: auto;
+
 			transform: translateX(0);
 			transition: transform 0.25s ease;
 		}
@@ -113,6 +115,11 @@ $breakpoint-mobile: 600px;
 			width: $sidebar-width;
 
 			transform: translateX(-100%);
+		}
+
+		&__sidebar {
+			height: auto;
+			min-height: 100%;
 		}
 	}
 }
