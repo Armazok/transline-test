@@ -2,11 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { clearRegProgress, REG_STORAGE_KEY, sendOtp } from '@/features/auth/register';
+import { clearRegProgress, loadRegProgress, saveRegProgress, sendOtp } from '@/features/auth/register';
 import type { ProfileFormValues } from '@/features/auth/register-profile';
-import type { UserRole } from '@/features/auth/select-role';
 
-import { useUser } from '@/entities/user';
+import { useUser, type UserRole } from '@/entities/user';
 
 import { ROUTER_PATH } from '@/shared/config';
 import { setAccessToken } from '@/shared/lib';
@@ -18,25 +17,22 @@ import type { RegisterProgress, RegisterStep } from '../types/types';
 const DEFAULT_ROLE: UserRole = 'carrier';
 const INITIAL_STEP: RegisterStep = 'phone';
 
-const loadProgress = (): RegisterProgress | null => {
-	try {
-		const raw = localStorage.getItem(REG_STORAGE_KEY);
-		return raw ? (JSON.parse(raw) as RegisterProgress) : null;
-	} catch {
-		return null;
-	}
-};
-
 export const useRegisterPanel = () => {
 	const navigate = useNavigate();
 	const { setProfile } = useUser();
 
-	const [step, setStep] = useState<RegisterStep>(() => loadProgress()?.step ?? INITIAL_STEP);
-	const [phone, setPhone] = useState(() => loadProgress()?.phone ?? '');
-	const [role, setRole] = useState<UserRole>(() => loadProgress()?.role ?? DEFAULT_ROLE);
+	const [step, setStep] = useState<RegisterStep>(
+		() => loadRegProgress<RegisterProgress>()?.step ?? INITIAL_STEP,
+	);
+	const [phone, setPhone] = useState(
+		() => loadRegProgress<RegisterProgress>()?.phone ?? '',
+	);
+	const [role, setRole] = useState<UserRole>(
+		() => loadRegProgress<RegisterProgress>()?.role ?? DEFAULT_ROLE,
+	);
 
 	useEffect(() => {
-		localStorage.setItem(REG_STORAGE_KEY, JSON.stringify({ step, phone, role }));
+		saveRegProgress({ step, phone, role });
 	}, [step, phone, role]);
 
 	const goNext = useCallback((current: RegisterStep) => {

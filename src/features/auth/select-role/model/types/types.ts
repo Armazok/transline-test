@@ -1,1 +1,1 @@
-export type UserRole = 'customer' | 'carrier';
+export type { UserRole } from '@/entities/user';

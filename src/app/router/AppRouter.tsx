@@ -64,9 +64,9 @@ const router = createBrowserRouter([
 					},
 				],
 			},
-			{ path: ROUTER_PATH.error.error_403, element: <PageError403 /> },
-			{ path: ROUTER_PATH.error.error_500, element: <PageError500 /> },
-			{ path: ROUTER_PATH.error.error_404, element: <PageError404 /> },
+			{ path: ROUTER_PATH.error.forbidden, element: <PageError403 /> },
+			{ path: ROUTER_PATH.error.serverError, element: <PageError500 /> },
+			{ path: ROUTER_PATH.error.notFound, element: <PageError404 /> },
 		],
 	},
 ]);

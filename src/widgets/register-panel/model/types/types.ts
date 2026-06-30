@@ -1,4 +1,4 @@
-import type { UserRole } from '@/features/auth/select-role';
+import type { UserRole } from '@/entities/user';
 
 export type RegisterStep = 'phone' | 'role' | 'otp' | 'profile';
 

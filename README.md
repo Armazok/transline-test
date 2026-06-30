@@ -6,17 +6,19 @@ React + TypeScript приложение с многошаговой регист
 
 ```bash
 npm install
-npm run dev       # http://localhost:3000
+npm run dev
 ```
+
+Приложение откроется на `http://localhost:5173`
 
 ### Дополнительные команды
 
-```bash
-npm run build        # production сборка
-npm run typecheck    # проверка типов
-npm run lint         # ESLint
-npm run storybook    # Storybook компонентов (http://localhost:6006)
-```
+| Команда             | Описание                             |
+| ------------------- | ------------------------------------ |
+| `npm run build`     | Production сборка                    |
+| `npm run typecheck` | Проверка типов                       |
+| `npm run lint`      | ESLint                               |
+| `npm run storybook` | Storybook на `http://localhost:6006` |
 
 ---
 

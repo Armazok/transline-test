@@ -26,14 +26,24 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 			<Paragraph variant={PARAGRAPH_VARIANT.text_1} className={cls.Sidebar__groupTitle}>
 				{t(group.title)}
 			</Paragraph>
-			{group.items.map((item) => (
-				<NavItem
-					key={item.label}
-					{...item}
-					label={t(item.label)}
-					children={item.children?.map((child) => ({ ...child, label: t(child.label) }))}
-				/>
-			))}
+			{group.items.map((item) =>
+				item.children ? (
+					<NavItem
+						key={item.label}
+						icon={item.icon}
+						label={t(item.label)}
+						children={item.children.map((child) => ({ ...child, label: t(child.label) }))}
+					/>
+				) : (
+					<NavItem
+						key={item.label}
+						to={item.to}
+						icon={item.icon}
+						label={t(item.label)}
+						end={item.end}
+					/>
+				),
+			)}
 		</div>
 	);
 

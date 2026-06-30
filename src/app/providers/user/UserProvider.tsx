@@ -1,8 +1,13 @@
 import { memo, useCallback, useMemo, useState, type ReactNode } from 'react';
 
-import { UserContext } from '@/entities/user/model/lib/userContext';
-import { readUserFromStorage, removeUserFromStorage, writeUserToStorage } from '@/entities/user/model/lib/userStorage';
-import type { EditableProfileFields, UserProfile } from '@/entities/user/model/types/types';
+import {
+	UserContext,
+	readUserFromStorage,
+	removeUserFromStorage,
+	writeUserToStorage,
+	type EditableProfileFields,
+	type UserProfile,
+} from '@/entities/user';
 
 interface UserProviderProps {
 	children: ReactNode;

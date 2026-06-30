@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { type UserRole } from '@/features/auth/select-role';
+import { type UserRole } from '@/entities/user';
 
 export interface ProfileFormValues {
 	lastName: string;

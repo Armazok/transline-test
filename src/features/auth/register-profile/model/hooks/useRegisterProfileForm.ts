@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { type UserRole } from '@/features/auth/select-role';
+import { type UserRole } from '@/entities/user';
 
 import { useToast } from '@/shared/hooks';
 

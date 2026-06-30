@@ -10,7 +10,4 @@ export interface UserProfile {
 	taxId: string;
 }
 
-export type EditableProfileFields = Pick<
-	UserProfile,
-	'lastName' | 'firstName' | 'middleName' | 'email' | 'phone'
->;
+export type EditableProfileFields = Pick<UserProfile, 'lastName' | 'firstName' | 'middleName' | 'email'>;

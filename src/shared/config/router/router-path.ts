@@ -24,9 +24,9 @@ export const ROUTER_PATH = {
 		},
 	},
 	error: {
-		error_404: '*',
-		error_403: '/403',
-		error_500: '/500',
+		notFound: '*',
+		forbidden: '/403',
+		serverError: '/500',
 	},
 } as const;
 
