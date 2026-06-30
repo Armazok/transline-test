@@ -37,7 +37,6 @@ export const DashboardLayout = memo(() => {
 		closeProfile,
 	} = useDashboardLayout();
 
-	// Закрываем сайдбар при навигации на мобильном
 	useEffect(() => {
 		if (isMobile) closeSidebar();
 	}, [location.pathname, isMobile, closeSidebar]);

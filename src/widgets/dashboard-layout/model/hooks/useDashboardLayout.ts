@@ -10,7 +10,6 @@ export const useDashboardLayout = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(() => !isMobile);
 	const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-	// Закрываем сайдбар при сужении до мобильного
 	useEffect(() => {
 		if (isMobile) setIsSidebarOpen(false);
 	}, [isMobile]);
