@@ -7,6 +7,8 @@
 
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme='light']) {
+		color-scheme: dark;
+
 		--bg-grey: #111214;
 		--bg-white: #1c1e21;
 
@@ -54,4 +56,34 @@ body {
 
 #root {
 	height: 100%;
+}
+
+// Autofill color fix — CSS variables don't resolve reliably inside -webkit-autofill rules,
+// so hardcoded hex values are used here to match the design tokens.
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-text-fill-color: #252526 !important;
+	-webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) input:-webkit-autofill,
+	:root:not([data-theme='light']) input:-webkit-autofill:hover,
+	:root:not([data-theme='light']) input:-webkit-autofill:focus,
+	:root:not([data-theme='light']) input:-webkit-autofill:active {
+		-webkit-text-fill-color: #f0f0f1 !important;
+		-webkit-box-shadow: 0 0 0 1000px #1c1e21 inset !important;
+	}
+}
+
+[data-theme='dark'] input:-webkit-autofill,
+[data-theme='dark'] input:-webkit-autofill:hover,
+[data-theme='dark'] input:-webkit-autofill:focus,
+[data-theme='dark'] input:-webkit-autofill:active {
+	-webkit-text-fill-color: #f0f0f1 !important;
+	-webkit-box-shadow: 0 0 0 1000px #242628 inset !important;
 }
