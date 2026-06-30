@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo } from 'react';
 
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { Sidebar } from '@/widgets/sidebar';
@@ -11,6 +12,7 @@ import { ProfilePanel } from '@/features/user/edit-profile';
 import { useUser } from '@/entities/user';
 
 import { ROUTER_PATH } from '@/shared/config';
+import { useToast } from '@/shared/hooks';
 import { removeAccessToken } from '@/shared/lib';
 
 import { DashboardHeader } from './DashboardHeader';
@@ -22,6 +24,8 @@ import cls from './DashboardLayout.module.scss';
 export const DashboardLayout = memo(() => {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { t } = useTranslation('dashboard');
+	const toast = useToast();
 	const { clearProfile } = useUser();
 	const {
 		isSidebarOpen,
@@ -45,10 +49,11 @@ export const DashboardLayout = memo(() => {
 				clearProfile();
 				removeAccessToken();
 				clearRegProgress();
+				toast.info(t('header.toast.loggedOut'));
 				navigate(ROUTER_PATH.auth.register, { replace: true });
 			}
 		},
-		[openProfile, clearProfile, navigate],
+		[openProfile, clearProfile, navigate, toast, t],
 	);
 
 	const activeActions = useMemo<ReadonlySet<UserMenuAction>>(

@@ -3,7 +3,10 @@
 	"header": {
 		"profile": "Мой профиль",
 		"editProfile": "Редактирование профиля",
-		"logout": "Выйти"
+		"logout": "Выйти",
+		"toast": {
+			"loggedOut": "Вы вышли из системы"
+		}
 	},
 	"nav": {
 		"orders": {

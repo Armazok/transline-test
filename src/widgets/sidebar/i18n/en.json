@@ -3,7 +3,10 @@
 	"header": {
 		"profile": "My profile",
 		"editProfile": "Edit profile",
-		"logout": "Log out"
+		"logout": "Log out",
+		"toast": {
+			"loggedOut": "You have been logged out"
+		}
 	},
 	"nav": {
 		"orders": {
