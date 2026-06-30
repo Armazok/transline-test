@@ -51,6 +51,14 @@
 	}
 }
 
+@media (max-width: 834px) {
+	.Sidebar {
+		&__navTop {
+			flex: none;
+		}
+	}
+}
+
 .NavItem {
 	display: flex;
 	align-items: center;
